@@ -1,0 +1,10 @@
+.enroll-to-school{
+    @apply flex sm:space-x-10 items-center justify-center flex-wrap m-[5rem] gap-[4rem]
+}
+
+.ct{
+    display: flex;
+    gap: 5rem;
+    align-items: center;
+    justify-content: center;
+}

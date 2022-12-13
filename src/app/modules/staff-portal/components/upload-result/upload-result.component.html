@@ -1,0 +1,112 @@
+<div>
+  <mat-toolbar class="text-blue-900 justify-between">
+    <div class="font-bold text-2xl font-serif">Upload Result</div>
+    <div
+      class="flex justify-between text-sm flex-col md:flex-row md:gap-2 text-blue-500"
+    >
+      Welcome back <span class="text-green-800 italic">{{ last_name }}</span>
+    </div>
+  </mat-toolbar>
+  <div class="uploader flex flex-col gap-3 mt-10">
+    <div class="file-picker w-[17rem]"></div>
+    <div class="single-add">
+      <form class="grid grid-cols-2 gap-5">
+        <div>
+          <input
+            type="text"
+            name="student_id"
+            id="student_id"
+            placeholder="Registration Number"
+            class="login-input"
+          />
+        </div>
+        <div>
+          <select name="subject" id="subject">
+            <option value="exam['exam_id']">::CHOOSE SUBJECT</option>
+            <option value="subject['subject_id']">Mathematics</option>
+            <option value="subject['subject_id']">Mathematics</option>
+            <option value="subject['subject_id']">Mathematics</option>
+            <option value="subject['subject_id']">Mathematics</option>
+            <option value="subject['subject_id']">Mathematics</option>
+          </select>
+        </div>
+        <div>
+          <select name="exam" id="exam">
+            <option value="exam['exam_id']">::CHOOSE EXAM TITLE</option>
+            <option value="exam['exam_id']">Introduction to physics</option>
+            <option value="exam['exam_id']">Introduction to physics</option>
+            <option value="exam['exam_id']">Introduction to physics</option>
+            <option value="exam['exam_id']">Introduction to physics</option>
+            <option value="exam['exam_id']">Introduction to physics</option>
+          </select>
+        </div>
+        <div>
+          <input
+            type="number"
+            name="score"
+            id="score"
+            placeholder="Score"
+            class="login-input"
+          />
+        </div>
+        <div>
+          <input
+            type="text"
+            name="remark"
+            id="remark"
+            placeholder="Remark"
+            class="login-input"
+          />
+        </div>
+        <div>
+          <button type="submit" class="upload" (click)="uploadResult()">
+            Add
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="result-list">
+    <table class="table">
+      <thead>
+        <tr class="payment">
+          <th scope="col">S/N</th>
+          <th scope="col">Registration Number</th>
+          <th scope="col">Student Name</th>
+          <th scope="col">Subject</th>
+          <th scope="col">Examination Title</th>
+          <th scope="col">Score</th>
+          <th scope="col">Remark</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let result of results; let i = index">
+          <td>{{ i }}</td>
+          <td>{{ result["student_id"] }}</td>
+          <td>{{ result["last_name"] }}&nbsp;{{ result["first_name"] }}</td>
+          <td>{{ result["subject_name"] }}</td>
+          <td>{{ result["exam_title"] }}</td>
+          <td>{{ result["score"] }}</td>
+          <td>{{ result["remark"] }}</td>
+          <td>
+            <button (click)="edit(i)">
+              <i class="fa fa-pencil" aria-hidden="true"
+                >&nbsp;&nbsp;</i
+              ></button
+            >|<button (click)="trash(i)">
+              <i class="fa fa-trash" aria-hidden="true"></i>&nbsp;&nbsp;
+            </button>
+          </td>
+        </tr>
+
+        <!-- Dont edit this -->
+        <tr class="last">
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

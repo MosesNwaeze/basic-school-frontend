@@ -1,0 +1,69 @@
+<div class="result-container" *ngIf="getResult('status')">
+  <div class="entrance-stud-info grid grid-cols-2 place-content-center pl-5">
+    <div class="first-name">
+      <p class="">
+        First Name:&nbsp;<span class="text-black text-[15px]">{{
+          capitalizedField(getResult("results")[0]["first_name"])
+        }}</span>
+      </p>
+    </div>
+    <div class="last-name">
+      <p class="text-black text-[15px]">
+        Last Name:&nbsp;<span class="text-black text-[15px]">{{
+          capitalizedField(getResult("results")[0]["last_name"])
+        }}</span>
+      </p>
+    </div>
+    <div class="gender">
+      <p class="text-black text-[15px]">
+        Gender:&nbsp;<span class="text-black text-[15px]">{{
+          capitalizedField(getResult("results")[0]["gender"])
+        }}</span>
+      </p>
+    </div>
+
+    <div class="reg-num">
+      <p class="">
+        Registration Number:&nbsp;<span class="text-black text-[15px]">{{
+          getResult("results")[0]["registration_num"]
+        }}</span>
+      </p>
+    </div>
+  </div>
+
+  <table mat-table [dataSource]="getResult('results')" class="w-full">
+    <ng-container matColumnDef="S/N">
+      <th mat-header-cell *matHeaderCellDef class="text-black text-[15px]">
+        S/N
+      </th>
+      <td mat-cell *matCellDef="let result">{{ result.ent_result_id }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="Remark">
+      <th mat-header-cell *matHeaderCellDef class="text-black text-[15px]">
+        Remark
+      </th>
+      <td mat-cell *matCellDef="let result">{{ result.remark }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="Score">
+      <th mat-header-cell *matHeaderCellDef class="text-black text-[15px]">
+        Score
+      </th>
+      <td mat-cell *matCellDef="let result">{{ result.score }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="Subject">
+      <th mat-header-cell *matHeaderCellDef class="text-black text-[15px]">
+        Subject
+      </th>
+      <td mat-cell *matCellDef="let result">{{ result.subject }}</td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+</div>
+<div *ngIf="!getResult('status')" class="text-center">
+  <p>No records to display</p>
+</div>

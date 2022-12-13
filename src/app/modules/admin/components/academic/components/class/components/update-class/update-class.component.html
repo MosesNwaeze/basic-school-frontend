@@ -1,0 +1,86 @@
+<div class="mt-10">
+  <form [formGroup]="updateClass" (ngSubmit)="search()">
+    <div class="text-center">
+      <mat-form-field class="w-[30rem]" appearance="fill">
+        <mat-label>Class Name</mat-label>
+        <input
+          matInput
+          type="text"
+          placeholder="Enter class name"
+          formControlName="class_name"
+          autofocus
+        />
+      </mat-form-field>
+    </div>
+    <div></div>
+    <div class="text-center">
+      <button
+        mat-icon-button
+        class="rounded-md text-white bg-blue-900 border-2 p-2 text-base font-bold hover:bg-blue-600 hover:shadow-md text-center w-[15rem]"
+        (click)="search()"
+      >
+        <span class="flex items-center justify-center gap-2"
+          ><mat-icon class="">search</mat-icon> Search Class</span
+        >
+      </button>
+    </div>
+  </form>
+
+  <form
+    class="mt-[5rem] hidden"
+    (ngSubmit)="onSubmit()"
+    [formGroup]="classForm"
+    name="update-class"
+  >
+    <h2
+      class="block text-green-600 text-center font-bold"
+      *ngIf="successMessage"
+    >
+      {{ successMessage }}
+    </h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 place-items-center my-5 gap-3">
+      <mat-form-field class="" appearance="fill" class="w-[20rem]">
+        <mat-label>Class Name</mat-label>
+        <input
+          matInput
+          type="text"
+          formControlName="class_name"
+          placeholder="Enter class name"
+          
+        />
+      </mat-form-field>
+
+      <mat-form-field class="" appearance="fill" class="w-[20rem]">
+        <mat-label>Class Category</mat-label>
+        <input
+          matInput
+          type="text"
+          formControlName="class_category"
+          placeholder="Enter class category"
+        />
+      </mat-form-field>
+
+      <mat-form-field class="" appearance="fill" class="w-[20rem]">
+        <mat-label>Class Capacity</mat-label>
+        <input
+          matInput
+          type="text"
+          formControlName="class_capacity"
+          placeholder="Enter class capacity"
+        />
+      </mat-form-field>
+    </div>
+
+    <div class="text-center">
+      <button
+        mat-icon-button
+        class="rounded-md text-white bg-blue-900 border-2 p-2 text-base font-bold w-[20rem] hover:bg-blue-600 hover:shadow-md text-center"
+        (click)="update()"
+      >
+        <span class="flex items-center justify-center gap-2"
+          ><mat-icon class="">store</mat-icon> Update Class</span
+        >
+      </button>
+    </div>
+  </form>
+</div>

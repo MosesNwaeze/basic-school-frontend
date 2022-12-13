@@ -1,0 +1,155 @@
+<div class="text-white bg-slate-500 flex justify-end px-7 mb-0 max-h-10 w-full">
+  <div class="flex justify-between items-center">
+    <img class="w-10 h-10 rounded-full m-2 bg-gray-700" [src]="passport" />
+
+    <div class="">
+      <span class="flex justify-between items-center"
+        >Timothy&nbsp;&nbsp;
+        <button
+          mat-icon-button
+          [matMenuTriggerFor]="menu"
+          aria-label="Example icon-button with a menu"
+        >
+          <mat-icon
+            class="bg-blue-800 text-white rounded-full hover:bg-white hover:text-blue-700 mt-2"
+            >keyboard_arrow_down</mat-icon
+          >
+        </button></span
+      >
+
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item>
+          <mat-icon>dialpad</mat-icon>
+          <span>Redial</span>
+        </button>
+        <button mat-menu-item disabled>
+          <mat-icon>voicemail</mat-icon>
+          <span>Check voice mail</span>
+        </button>
+        <button mat-menu-item>
+          <mat-icon>notifications_off</mat-icon>
+          <span>Disable alerts</span>
+        </button>
+      </mat-menu>
+    </div>
+  </div>
+</div>
+<div class="dashboard mt-0 p-0">
+  <main class="left relative">
+    <div class="m-8 text-3xl"><img src="" alt="logo" /></div>
+    <a
+      routerLink="dashboard"
+      class="left-items"
+      routerLinkActive="active-link"
+      ariaCurrentWhenActive="page"
+    >
+      <span class="flex gap-2"
+        ><mat-icon>dashboard</mat-icon>Dashboard
+      </span>
+    </a>
+
+    <a
+      routerLink="profile"
+      class="left-items"
+      routerLinkActive="active-link"
+      ariaCurrentWhenActive="page"
+      ><span class="flex gap-2"><mat-icon>how_to_reg</mat-icon> Profile</span>
+     
+    </a>
+
+    <a
+      routerLink="manage-staff"
+      class="left-items"
+      routerLinkActive="active-link"
+      ariaCurrentWhenActive="page"
+      ><i class="fa fa-user-plus mr-2" aria-hidden="true"></i>
+      Staff
+    </a>
+
+    <a
+      routerLink="school"
+      class="left-items"
+      routerLinkActive="active-link"
+      ariaCurrentWhenActive="page"
+      ><span class="flex gap-2"
+        ><mat-icon>home</mat-icon> School</span
+      >
+    </a>
+
+    <a
+      routerLink="admission"
+      class="left-items"
+      routerLinkActive="active-link"
+      ariaCurrentWhenActive="page"
+      ><span class="flex gap-2"
+        ><mat-icon>verified_user</mat-icon>Admission</span
+      >
+    </a>
+
+    <a
+      routerLink="examination"
+      class="left-items"
+      routerLinkActive="active-link"
+      ariaCurrentWhenActive="page"
+      ><span class="flex gap-2"><mat-icon>equalizer</mat-icon>Examination</span>
+    </a>
+
+    <a
+      routerLink="fee-payment"
+      class="left-items"
+      routerLinkActive="active-link"
+      ariaCurrentWhenActive="page"
+      ><span class="flex gap-2"><mat-icon>receipt</mat-icon>Fee Payment</span>
+    </a>
+
+    <a
+      routerLink="inventory"
+      class="left-items"
+      routerLinkActive="active-link"
+      ariaCurrentWhenActive="page"
+      ><span class="flex gap-2"><mat-icon> list_alt</mat-icon> Inventory</span>
+    </a>
+
+    <a
+      routerLink="communication"
+      class="left-items"
+      routerLinkActive="active-link"
+      ariaCurrentWhenActive="page"
+      ><span class="flex gap-2"><mat-icon> 360</mat-icon> Communication</span>
+    </a>
+
+    <a
+      routerLink="software"
+      class="left-items"
+      routerLinkActive="active-link"
+      ariaCurrentWhenActive="page"
+      ><span class="flex gap-2"><mat-icon>build</mat-icon>Software</span>
+    </a>
+
+    <a
+      routerLink="report"
+      class="left-items"
+      routerLinkActive="active-link"
+      ariaCurrentWhenActive="page"
+      ><span class="flex gap-2"><mat-icon>report</mat-icon>Report</span>
+    </a>
+    <button
+      mat-button
+      [matMenuTriggerFor]="beforeMenu"
+      class="text-left left-items"
+    >
+      <span class="flex gap-2"><mat-icon>school</mat-icon>Academics</span>
+    </button>
+    <mat-menu #beforeMenu="matMenu" yPosition="below" class="w-[15rem]">
+      <button mat-menu-item routerLink="academic/class">
+        <mat-icon>store</mat-icon>Class
+      </button>
+      <button mat-menu-item routerLink="academic/subject">
+        <mat-icon>category</mat-icon>Subject
+      </button>
+    </mat-menu>
+  </main>
+  <main class="content p-2">
+    <router-outlet> </router-outlet>
+  </main>
+</div>

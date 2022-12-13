@@ -1,0 +1,40 @@
+<div class="w-[50rem]">
+  <h2 mat-dialog-title class="text-blue-900">Students information</h2>
+  <mat-dialog-content class="mat-typography">
+    <mat-table [dataSource]="students" class="mat-elevation-z8">
+      <ng-container matColumnDef="First Name">
+        <mat-header-cell *matHeaderCellDef> First name </mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          {{ element["first_name"] }}
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="Last Name">
+        <mat-header-cell *matHeaderCellDef> Last Name </mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          {{ element["last_name"] }}
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="Student Id">
+        <mat-header-cell *matHeaderCellDef> Student ID </mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          {{ element["student_id"] }}
+        </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+    </mat-table>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button
+      mat-button
+      mat-dialog-close
+      class="bg-red-600 p-3 rounded-md text-white hover:bg-red-400"
+    >
+      Cancel
+    </button>
+    <!-- <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Install</button> -->
+  </mat-dialog-actions>
+</div>

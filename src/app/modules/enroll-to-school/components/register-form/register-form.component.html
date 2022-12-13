@@ -1,1 +1,567 @@
-<p>register-form works!</p>
+<div class="px-5">
+  <mat-card class="relative my-1">
+    <mat-toolbar class="my-5">
+      <h1 class="text-left text-[#1E3A8A] font-bold text-lg">ENROLLMENT FORM</h1>
+    </mat-toolbar>
+  </mat-card>
+
+  <div class="mt-3">
+    <img
+      src="https://via.placeholder.com/150"
+      class="w-[150px] h-[150px] mb-3"
+      alt="student-photo"
+    />
+  </div>
+  <div>
+    <input
+      type="file"
+      name="studentPhoto"
+      (change)="handleFileUpload($event)"
+      required="true"
+      enctype="multipart/form-data"
+      #fileUpload
+      class="hidden"
+    />
+
+    <div class="file-upload flex mt-3">
+      <span [ngStyle]="!fileName ? { color: 'red' } : { color: 'black' }">{{
+        fileName || "No file uploaded yet."
+      }}</span>
+
+      <button mat-mini-fab (click)="fileUpload.click()">
+        <mat-icon class="">attach_file</mat-icon>
+      </button>
+    </div>
+    <em class="text-red-500"
+      >upload a clear photo of the candidate with a white background. The photo
+      must be less than 2mb</em
+    >
+    <mat-icon class="absolute top-[17rem] left-20">add</mat-icon>
+  </div>
+</div>
+
+<form
+  class="flex flex-col"
+  (ngSubmit)="onSubmit()"
+  [formGroup]="entranceApplicantForm"
+>
+  <div
+    *ngIf="isValidFields"
+    class="text-red-600 text-base flex justify-center items-center mt-5 bg-slate-50 font-bold"
+  >
+    {{ validFields }}
+  </div>
+  <mat-card class="my-1">
+    <mat-toolbar class="text-center">
+      <p class="text-[#1E3A8A] text-sm text-center font-bold">GUARDIAN | PARENT SECTION</p>
+    </mat-toolbar>
+    <div
+      class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 place-items-center my-5"
+      formGroupName="guardianForm"
+    >
+      <div class="flex flex-col gap-0">
+        <label for="first-name" class="ml-3 font-bold"
+          >First Name<span class="text-red-700">*</span></label
+        >
+        <input
+          type="text"
+          id="first-name"
+          name="first-name"
+          placeholder="First name"
+          class="input-controls p-2 w-[17rem] rounded-md m-3 hover:shadow-md hover:accent-slate-50"
+          formControlName="firstName"
+          autofocus
+        />
+        <div
+          *ngIf="
+            ParentFirstName!.invalid &&
+            (ParentFirstName!.dirty || ParentFirstName!.touched)
+          "
+          class="text-red-600 text-[12px] mt-0 font-semibold flex justify-start ml-2 mb-[0.27rem]"
+        >
+          <div *ngIf="ParentFirstName!.errors?.['required']" class="">
+            First Name is required.
+          </div>
+        </div>
+      </div>
+
+      <div class="flex flex-col">
+        <label for="middle-name" class="ml-3 font-bold">Middle Name</label>
+        <input
+          type="text"
+          id="middle-name"
+          name="middle-name"
+          formControlName="middleName"
+          placeholder="Middle name"
+          class="input-controls p-2 w-[17rem] rounded-md m-3"
+        />
+      </div>
+
+      <div class="flex flex-col">
+        <label for="last-name" class="ml-3 font-bold"
+          >Last Name<span class="text-red-700">*</span></label
+        >
+        <input
+          type="text"
+          id="last-name"
+          name="last-name"
+          formControlName="lastName"
+          placeholder="Last name"
+          class="input-controls p-2 w-[17rem] rounded-md m-3"
+        />
+        <div
+          *ngIf="
+            ParentLastName!.invalid &&
+            (ParentLastName!.dirty || ParentLastName!.touched)
+          "
+          class="text-red-600 text-[12px] mt-0 font-semibold flex justify-start ml-2 mb-[0.27rem]"
+        >
+          <div *ngIf="ParentFirstName!.errors?.['required']" class="">
+            Last Name is required.
+          </div>
+        </div>
+      </div>
+
+      <div class="flex flex-col">
+        <label for="email" class="ml-3 font-bold"
+          >email<span class="text-red-700">*</span></label
+        >
+        <input
+          type="email"
+          id="email"
+          name="email"
+          formControlName="email"
+          placeholder="email"
+          class="input-controls p-2 w-[17rem] rounded-md m-3"
+        />
+        <div
+          *ngIf="
+            ParentEmail!.invalid && (ParentEmail!.dirty || ParentEmail!.touched)
+          "
+          class="text-red-600 text-[12px] mt-0 font-semibold flex justify-start ml-2 mb-[0.27rem]"
+        >
+          <div *ngIf="ParentEmail!.errors?.['required']" class="">
+            Email is required.
+          </div>
+        </div>
+      </div>
+      <div class="flex flex-col">
+        <label for="phone-number" class="ml-3 font-bold"
+          >Phone Number<span class="text-red-700">*</span></label
+        >
+        <input
+          type="text"
+          id="phone-number"
+          name="phone-number"
+          formControlName="phoneNumber"
+          placeholder="Phone number"
+          class="input-controls p-2 w-[17rem] rounded-md m-3"
+        />
+        <div
+          *ngIf="
+            phoneNumber!.invalid && (phoneNumber!.dirty || phoneNumber!.touched)
+          "
+          class="text-red-600 text-[12px] mt-0 font-semibold flex justify-start ml-2 mb-[0.27rem]"
+        >
+          <div *ngIf="phoneNumber!.errors?.['required']" class="">
+            Phone number is required.
+          </div>
+        </div>
+      </div>
+
+      <div class="flex flex-col">
+        <label for="occupation" class="ml-3 font-bold"
+          >Occupation<span class="text-red-700">*</span></label
+        >
+        <input
+          type="text"
+          id="occupation"
+          name="occupation"
+          formControlName="occupation"
+          placeholder="Occupation"
+          class="input-controls p-2 w-[17rem] rounded-md m-3"
+        />
+        <div
+          *ngIf="
+            ParentOccupation!.invalid &&
+            (ParentOccupation!.dirty || ParentOccupation!.touched)
+          "
+          class="text-red-600 text-[12px] mt-0 font-semibold flex justify-start ml-2 mb-[0.27rem]"
+        >
+          <div *ngIf="ParentOccupation!.errors?.['required']" class="">
+            Occupation is required.
+          </div>
+        </div>
+      </div>
+
+      <div class="flex flex-col">
+        <label for="religion" class="ml-3 font-bold"
+          >Religion<span class="text-red-700">*</span></label
+        >
+        <input
+          type="text"
+          id="religion"
+          name="religion"
+          formControlName="religion"
+          placeholder="Religion"
+          class="input-controls p-2 w-[17rem] rounded-md m-3"
+        />
+        <div
+          *ngIf="
+            ParentReligion!.invalid &&
+            (ParentReligion!.dirty || ParentReligion!.touched)
+          "
+          class="text-red-600 text-[12px] mt-0 font-semibold flex justify-start ml-2 mb-[0.27rem]"
+        >
+          <div *ngIf="ParentReligion!.errors?.['required']" class="">
+            Religion is required.
+          </div>
+        </div>
+      </div>
+
+      <div class="flex flex-col">
+        <label for="gender" class="ml-3 font-bold"
+          >Gender<span class="text-red-700">*</span></label
+        >
+        <input
+          type="text"
+          id="gender"
+          name="gender"
+          formControlName="gender"
+          placeholder="Gender"
+          class="input-controls p-2 w-[17rem] rounded-md m-3"
+        />
+        <div
+          *ngIf="
+            ParentGender!.invalid &&
+            (ParentGender!.dirty || ParentGender!.touched)
+          "
+          class="text-red-600 text-[12px] mt-0 font-semibold flex justify-start ml-2 mb-[0.27rem]"
+        >
+          <div *ngIf="ParentGender!.errors?.['required']" class="">
+            Gender is required.
+          </div>
+        </div>
+      </div>
+
+      <div class="flex flex-col">
+        <label for="state-of-origin" class="ml-3 font-bold"
+          >State of origin<span class="text-red-700">*</span></label
+        >
+        <input
+          type="text"
+          id="state-of-origin"
+          name="state-of-origin"
+          formControlName="stateOfOrigin"
+          placeholder="State of origin"
+          class="input-controls p-2 w-[17rem] rounded-md m-3"
+        />
+        <div
+          *ngIf="
+            ParentStateOfOrigin!.invalid &&
+            (ParentStateOfOrigin!.dirty || ParentStateOfOrigin!.touched)
+          "
+          class="text-red-600 text-[12px] mt-0 font-semibold flex justify-start ml-2 mb-[0.27rem]"
+        >
+          <div *ngIf="ParentStateOfOrigin!.errors?.['required']" class="">
+            State of origin is required.
+          </div>
+        </div>
+      </div>
+
+      <div class="flex flex-col">
+        <label for="address" class="ml-[2rem] font-bold"
+          >Address<span class="text-red-700">*</span></label
+        >
+        <textarea
+          name="address"
+          formControlName="address"
+          rows="5"
+          cols="40"
+          class="ml-[2rem] input-controls mt-3 rounded-md"
+          placeholder="Address"
+        ></textarea>
+        <div
+          *ngIf="
+            ParentAddress!.invalid &&
+            (ParentAddress!.dirty || ParentAddress!.touched)
+          "
+          class="text-red-600 text-[12px] mt-0 font-semibold flex justify-start ml-2 mb-[0.27rem]"
+        >
+          <div *ngIf="ParentAddress!.errors?.['required']" class="">
+            Address is required.
+          </div>
+        </div>
+      </div>
+    </div>
+  </mat-card>
+
+  <mat-card class="my-1">
+    <mat-toolbar>
+      <p class="text-[#1E3A8A] text-sm text-center font-bold">STUDENT SECTION</p>
+    </mat-toolbar>
+
+    <div
+      class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 place-items-center my-5"
+      formGroupName="studentForm"
+    >
+      <div class="flex flex-col">
+        <label for="first-name" class="ml-3 font-bold"
+          >First Name<span class="text-red-700">*</span></label
+        >
+        <input
+          type="text"
+          id="first-name"
+          name="first-name"
+          formControlName="firstName"
+          placeholder="First name"
+          class="input-controls p-2 w-[17rem] rounded-md m-3 hover:shadow-md hover:accent-slate-50"
+          autofocus
+        />
+        <div
+          *ngIf="
+            studentFirstName!.invalid &&
+            (studentFirstName!.dirty || studentFirstName!.touched)
+          "
+          class="text-red-600 text-[12px] mt-0 font-semibold flex justify-start ml-2 mb-[0.27rem]"
+        >
+          <div *ngIf="studentFirstName!.errors?.['required']" class="">
+            First name is required.
+          </div>
+        </div>
+      </div>
+
+      <div class="flex flex-col">
+        <label for="middle-name" class="ml-3 font-bold">Middle Name</label>
+        <input
+          type="text"
+          id="middle-name"
+          name="middle-name"
+          formControlName="middleName"
+          placeholder="Middle name"
+          class="input-controls p-2 w-[17rem] rounded-md m-3"
+        />
+      </div>
+
+      <div class="flex flex-col">
+        <label for="last-name" class="ml-3 font-bold"
+          >Last Name<span class="text-red-700">*</span></label
+        >
+        <input
+          type="text"
+          id="last-name"
+          name="last-name"
+          formControlName="lastName"
+          placeholder="Last name"
+          class="input-controls p-2 w-[17rem] rounded-md m-3"
+        />
+        <div
+          *ngIf="
+            studentLastName!.invalid &&
+            (studentLastName!.dirty || studentLastName!.touched)
+          "
+          class="text-red-600 text-[12px] mt-0 font-semibold flex justify-start ml-2 mb-[0.27rem]"
+        >
+          <div *ngIf="studentLastName!.errors?.['required']" class="">
+            Last name is required.
+          </div>
+        </div>
+      </div>
+
+      <div class="flex flex-col">
+        <label for="religion" class="ml-3 font-bold"
+          >Religion<span class="text-red-700">*</span></label
+        >
+        <input
+          type="text"
+          id="religion"
+          name="religion"
+          formControlName="religion"
+          placeholder="Religion"
+          class="input-controls p-2 w-[17rem] rounded-md m-3"
+        />
+        <div
+          *ngIf="
+            studentReligion!.invalid &&
+            (studentReligion!.dirty || studentReligion!.touched)
+          "
+          class="text-red-600 text-[12px] mt-0 font-semibold flex justify-start ml-2 mb-[0.27rem]"
+        >
+          <div *ngIf="studentReligion!.errors?.['required']" class="">
+            Religion is required.
+          </div>
+        </div>
+      </div>
+      <div class="flex flex-col">
+        <label for="date-of-birth" class="ml-3 font-bold"
+          >Date of birth<span class="text-red-700">*</span></label
+        >
+        <input
+          type="date"
+          id="date-of-birth"
+          name="date-of-birth"
+          formControlName="dateOfBirth"
+          class="input-controls p-2 w-[17rem] rounded-md m-3"
+        />
+        <div
+          *ngIf="
+            studentDateOfBirth!.invalid &&
+            (studentDateOfBirth!.dirty || studentDateOfBirth!.touched)
+          "
+          class="text-red-600 text-[12px] mt-0 font-semibold flex justify-start ml-2 mb-[0.27rem]"
+        >
+          <div *ngIf="studentDateOfBirth!.errors?.['required']" class="">
+            Date of birth is required.
+          </div>
+        </div>
+      </div>
+      <div class="flex flex-col">
+        <label for="phone-number" class="ml-3 font-bold">Phone Number</label>
+        <input
+          type="text"
+          id="phone-number"
+          name="phone-number"
+          formControlName="phoneNumber"
+          placeholder="Phone number"
+          class="input-controls p-2 w-[17rem] rounded-md m-3"
+        />
+      </div>
+
+      <div class="flex flex-col">
+        <label for="class-to-enter" class="ml-3 font-bold"
+          >Class to enter<span class="text-red-700">*</span></label
+        >
+        <input
+          type="text"
+          id="class-to-enter"
+          name="class-to-enter"
+          formControlName="classToEnter"
+          placeholder="Class to enter"
+          class="input-controls p-2 w-[17rem] rounded-md m-3"
+        />
+        <div
+          *ngIf="
+            studentClassToEnter!.invalid &&
+            (studentClassToEnter!.dirty || studentClassToEnter!.touched)
+          "
+          class="text-red-600 text-[12px] mt-0 font-semibold flex justify-start ml-2 mb-[0.27rem]"
+        >
+          <div *ngIf="studentReligion!.errors?.['required']" class="">
+            Class to enter is required.
+          </div>
+        </div>
+      </div>
+
+      <div class="flex flex-col">
+        <label for="gender" class="ml-3 font-bold"
+          >Gender<span class="text-red-700">*</span></label
+        >
+        <input
+          type="text"
+          id="gender"
+          name="gender"
+          formControlName="gender"
+          placeholder="Gender"
+          class="input-controls p-2 w-[17rem] rounded-md m-3"
+        />
+
+        <div
+          *ngIf="
+            studentGender!.invalid &&
+            (studentGender!.dirty || studentGender!.touched)
+          "
+          class="text-red-600 text-[12px] mt-0 font-semibold flex justify-start ml-2 mb-[0.27rem]"
+        >
+          <div *ngIf="studentGender!.errors?.['required']" class="">
+            Gender is required.
+          </div>
+        </div>
+      </div>
+
+      <div class="flex flex-col">
+        <label for="state-of-origin" class="ml-3 font-bold"
+          >State of origin<span class="text-red-700">*</span></label
+        >
+        <input
+          type="text"
+          id="state-of-origin"
+          name="state-of-origin"
+          formControlName="stateOfOrigin"
+          placeholder="State of origin"
+          class="input-controls p-2 w-[17rem] rounded-md m-3"
+        />
+
+        <div
+          *ngIf="
+            studentStateOfOrigin!.invalid &&
+            (studentStateOfOrigin!.dirty || studentStateOfOrigin!.touched)
+          "
+          class="text-red-600 text-[12px] mt-0 font-semibold flex justify-start ml-2 mb-[0.27rem]"
+        >
+          <div *ngIf="studentStateOfOrigin!.errors?.['required']" class="">
+            State of origin is required.
+          </div>
+        </div>
+      </div>
+
+      <div class="flex flex-col">
+        <label for="email" class="ml-3 font-bold">email</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          formControlName="email"
+          placeholder="email"
+          class="input-controls p-2 w-[17rem] rounded-md m-3"
+        />
+      </div>
+
+      <div class="flex flex-col">
+        <label for="address" class="ml-[2rem] font-bold"
+          >Address<span class="text-red-700">*</span></label
+        >
+        <textarea
+          name="address"
+          formControlName="address"
+          rows="5"
+          cols="40"
+          class="ml-[2rem] input-controls mt-3 rounded-md"
+          placeholder="Address"
+        ></textarea>
+        <div
+          *ngIf="
+            studentAddress!.invalid &&
+            (studentAddress!.dirty || studentAddress!.touched)
+          "
+          class="text-red-600 text-[12px] mt-0 font-semibold flex justify-start ml-2 mb-[0.27rem]"
+        >
+          <div *ngIf="studentAddress!.errors?.['required']" class="">
+            Address is required.
+          </div>
+        </div>
+      </div>
+    </div>
+  </mat-card>
+
+  <mat-card class="h-[6rem] text-[#1E3A8A]">
+    <button
+      mat-button
+      type="reset"
+      class="absolute left-3 top-3 font-normal text-white bg-[#1E3A8A] p-3 rounded-md max-w-[12rem] w-[12rem] hover:shadow-md hover:bg-blue-800"
+      [routerLink]="['../']"
+    >
+      <span class="top-0 flex items-center justify-start"
+        ><mat-icon>arrow_back</mat-icon>&nbsp; Cancel</span
+      >
+    </button>
+    <button
+      type="submit"
+      class="absolute right-3 top-3 font-normal text-white bg-[#1E3A8A] p-3 rounded-md max-w-[12rem] w-[12rem] hover:shadow-md hover:bg-blue-800"
+    >
+      <span class="flex items-center justify-end"
+        >Proceed to payment &nbsp;
+        <mat-icon class="">arrow_forward</mat-icon></span
+      >
+    </button>
+  </mat-card>
+</form>

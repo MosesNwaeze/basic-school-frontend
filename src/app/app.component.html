@@ -1,6 +1,9 @@
-<div class="flex flex-col m-4 mt-2 sm:mt-0">
-    <app-header></app-header>
+<div class="main-container">
+  <app-header></app-header>
+  <div class="flex flex-col mt-2 sm:mt-0">
     <router-outlet></router-outlet>
-    <app-footer></app-footer>
-    
+  </div>
+  <div class="spinner"  >
+    <mat-spinner class="item-spinner" color="accent" [mode]="mode"></mat-spinner>
+  </div>
 </div>

@@ -1,0 +1,231 @@
+<div class="student-form">
+  <form class="flex flex-col" (ngSubmit)="onSubmit()" [formGroup]="staffForm">
+    <div
+      *ngIf="isValidFields"
+      class="text-red-600 text-base flex justify-center items-center mt-5 bg-slate-50 font-bold"
+    >
+      {{ validFields }}
+    </div>
+    <div class="file">
+      <div class="mt-3">
+        <img
+          [src]="fileName ? file : 'https://via.placeholder.com/150'"
+          class="w-[150px] h-[150px] mb-3"
+          alt="student-photo"
+        />
+      </div>
+      <div>
+        <input
+          type="file"
+          name="staffPhoto"
+          (change)="handleFileUpload($event)"
+          required="true"
+          enctype="multipart/form-data"
+          #fileUpload
+          class="hidden"
+        />
+
+        <div class="file-upload flex mt-3">
+          <span [ngStyle]="!fileName ? { color: 'red' } : { color: 'black' }">{{
+            fileName || "No file uploaded yet."
+          }}</span>
+
+          <button mat-mini-fab (click)="fileUpload.click()">
+            <mat-icon class="">attach_file</mat-icon>
+          </button>
+        </div>
+        <em class="text-[#1E3A8A]"
+          >upload a clear photo of the candidate with a white background. The
+          photo must be less than 2mb</em
+        >
+        <mat-icon class="absolute top-[47%] left-[31%] text-[#1E3A8A] text-xl"
+          >add</mat-icon
+        >
+      </div>
+    </div>
+
+    <mat-card class="my-1">
+      <div
+        class="grid grid-cols-1 md:grid-cols-2 place-items-center my-5 gap-3"
+      >
+        <div class="w-full">
+          <span class="text-[#FFCC00] block"
+            >*Please take note of your application identity</span
+          >
+
+          <mat-form-field class="w-full" appearance="fill">
+            <mat-label>Registration Number</mat-label>
+            <input
+              matInput
+              type="text"
+              disabled
+              id="staff_id"
+              name="staff_id"
+              disabled
+              [value]="staff_id"
+            />
+          </mat-form-field>
+        </div>
+
+        <mat-form-field class="w-full" appearance="fill">
+          <mat-label>First Name</mat-label>
+          <input
+            matInput
+            type="text"
+            id="first-name"
+            name="first-name"
+            formControlName="first_name"
+            placeholder="First name"
+          />
+        </mat-form-field>
+
+        <mat-form-field class="w-full" appearance="fill">
+          <mat-label>Middle Name</mat-label>
+          <input
+            matInput
+            type="text"
+            id="middle-name"
+            name="middle-name"
+            formControlName="middle_name"
+            placeholder="Middle Name"
+          />
+        </mat-form-field>
+
+        <mat-form-field class="w-full" appearance="fill">
+          <mat-label>Last Name</mat-label>
+          <input
+            matInput
+            type="text"
+            id="last-name"
+            name="last-name"
+            formControlName="last_name"
+            placeholder="Last Name"
+          />
+        </mat-form-field>
+
+        <mat-form-field class="w-full" appearance="fill">
+          <mat-label>Religion</mat-label>
+          <input
+            matInput
+            type="text"
+            id="religion"
+            name="religion"
+            formControlName="religion"
+            placeholder="Religion"
+          />
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="w-full">
+          <mat-label>Date of birth</mat-label>
+          <input
+            matInput
+            [matDatepicker]="picker"
+            id="date-of-birth"
+            name="date-of-birth"
+            formControlName="date_of_birth"
+          />
+          <mat-hint>MM/DD/YYYY</mat-hint>
+          <mat-datepicker-toggle
+            matIconSuffix
+            [for]="picker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field class="w-full" appearance="fill">
+          <mat-label>Phone Number</mat-label>
+          <input
+            matInput
+            type="number"
+            id="phone-number"
+            name="phone-number"
+            formControlName="phone_number"
+            placeholder="Phone number"
+          />
+        </mat-form-field>
+
+        <mat-form-field class="w-full" appearance="fill">
+          <mat-label>Gender</mat-label>
+          <input
+            matInput
+            type="text"
+            id="gender"
+            name="gender"
+            formControlName="gender"
+            placeholder="Gender"
+          />
+        </mat-form-field>
+
+        <mat-form-field class="w-full" appearance="fill">
+          <mat-label>State of origin</mat-label>
+          <input
+            matInput
+            type="text"
+            id="state-of-origin"
+            name="state-of-origin"
+            formControlName="state_of_origin"
+            placeholder="State of origin"
+          />
+        </mat-form-field>
+
+        <div class="w-full flex flex-col">
+          <mat-form-field class="w-full" appearance="fill">
+            <mat-label>Password</mat-label>
+            <input
+              matInput
+              type="password"
+              id="password"
+              name="password"
+              formControlName="password"
+              placeholder="Password"
+            />
+          </mat-form-field>
+
+          <mat-form-field class="w-full" appearance="fill">
+            <mat-label>Confirm Password</mat-label>
+            <input
+              matInput
+              type="password"
+              id="confirm-password"
+              name="confirm-password"
+              formControlName="confirm_password"
+              placeholder="Confirm Password"
+            />
+          </mat-form-field>
+        </div>
+
+        <mat-form-field class="w-full" appearance="fill">
+          <mat-label>Email</mat-label>
+          <input
+            type="email"
+            matInput
+            formControlName="email"
+            [errorStateMatcher]="matcher"
+            placeholder="Ex. pat@example.com"
+          />
+          <mat-error
+            *ngIf="email?.hasError('email') && !email?.hasError('required')"
+          >
+            Please enter a valid email address
+          </mat-error>
+          <mat-error *ngIf="email?.hasError('required')">
+            Email is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="w-full">
+          <mat-label>Address</mat-label>
+          <textarea
+            matInput
+            formControlName="address"
+            placeholder="Address"
+            name="address"
+          ></textarea>
+        </mat-form-field>
+      </div>
+      <div class="text-center">
+        <button type="submit" class="create-student">Create staff</button>
+      </div>
+    </mat-card>
+  </form>
+</div>

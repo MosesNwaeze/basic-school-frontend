@@ -1,0 +1,45 @@
+<div>
+  <mat-toolbar class="text-blue-900 justify-between">
+    <div class="font-bold text-2xl">Class Management</div>
+    <div
+      class="flex justify-between text-sm flex-col md:flex-row md:gap-2 text-blue-500"
+    >
+      Welcome back <span class="text-green-800 italic">Timothy</span>
+    </div>
+  </mat-toolbar>
+  <div>
+    <nav class="flex gap-10 justify-start py-5 font-medium text-base">
+      <a
+        routerLink="view-class"
+        routerLinkActive="active-link"
+        ariaCurrentWhenActive="page"
+        >View Class</a
+      >
+      <a
+        routerLink="create-class"
+        routerLinkActive="active-link"
+        ariaCurrentWhenActive="page"
+        >Create Class</a
+      >
+      <a
+        routerLink="update-class"
+        routerLinkActive="active-link"
+        ariaCurrentWhenActive="page"
+        >Update Class</a
+
+        
+      >
+      <a
+        routerLink="assign-staff"
+        routerLinkActive="active-link"
+        ariaCurrentWhenActive="page"
+        >Assign Teacher</a
+
+        
+      >
+    </nav>
+    <div class="p-2">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

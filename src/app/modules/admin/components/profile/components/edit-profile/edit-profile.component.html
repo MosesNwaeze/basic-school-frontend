@@ -1,0 +1,132 @@
+<div class="p-0">
+  <form [formGroup]="editForm" (ngSubmit)="handleSubmit()">
+    <div class="grid grid-cols-1 gap-2 md:grid-cols-2">
+
+      <mat-form-field class="w-full" appearance="fill">
+        <mat-label>First Name</mat-label>
+        <input
+          matInput
+          type="text"
+          id="first-name"
+          name="first-name"
+          formControlName="first_name"
+          placeholder="First name"
+        />
+      </mat-form-field>
+
+      <mat-form-field class="w-full" appearance="fill">
+        <mat-label>Middle Name</mat-label>
+        <input
+          matInput
+          type="text"
+          id="middle-name"
+          name="middle-name"
+          formControlName="middle_name"
+          placeholder="Middle Name"
+        />
+      </mat-form-field>
+
+      <mat-form-field class="w-full" appearance="fill">
+        <mat-label>Last Name</mat-label>
+        <input
+          matInput
+          type="text"
+          id="last-name"
+          name="last-name"
+          formControlName="last_name"
+          placeholder="Last Name"
+        />
+      </mat-form-field>
+
+      <mat-form-field class="w-full" appearance="fill">
+        <mat-label>Religion</mat-label>
+        <input
+          matInput
+          type="text"
+          id="religion"
+          name="religion"
+          formControlName="religion"
+          placeholder="Religion"
+        />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="w-full">
+        <mat-label>Date of birth</mat-label>
+        <input
+          matInput
+          [matDatepicker]="picker"
+          id="date-of-birth"
+          name="date-of-birth"
+          formControlName="date_of_birth"
+        />
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle
+          matIconSuffix
+          [for]="picker"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field class="w-full" appearance="fill">
+        <mat-label>Phone Number</mat-label>
+        <input
+          matInput
+          type="number"
+          id="phone-number"
+          name="phone-number"
+          formControlName="phone_number"
+          placeholder="Phone number"
+        />
+      </mat-form-field>
+
+      <mat-form-field class="w-full" appearance="fill">
+        <mat-label>Gender</mat-label>
+        <input
+          matInput
+          type="text"
+          id="gender"
+          name="gender"
+          formControlName="gender"
+          placeholder="Gender"
+        />
+      </mat-form-field>
+
+      <mat-form-field class="w-full" appearance="fill">
+        <mat-label>State of origin</mat-label>
+        <input
+          matInput
+          type="text"
+          id="state-of-origin"
+          name="state-of-origin"
+          formControlName="state_of_origin"
+          placeholder="State of origin"
+        />
+      </mat-form-field>
+
+      <mat-form-field class="w-full" appearance="fill">
+        <mat-label>Email</mat-label>
+        <input
+          type="email"
+          matInput
+          formControlName="email"
+          [errorStateMatcher]="matcher"
+          placeholder="Ex. pat@example.com"
+        />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="w-full">
+        <mat-label>Address</mat-label>
+        <textarea
+          matInput
+          formControlName="address"
+          placeholder="Address"
+          name="address"
+        ></textarea>
+      </mat-form-field>
+      
+    </div>
+    <div class="flex justify-center items-center justify-self-center">
+      <button type="submit" class="update">Update</button>
+    </div>
+  </form>
+</div>

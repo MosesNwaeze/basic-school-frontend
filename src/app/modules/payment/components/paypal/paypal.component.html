@@ -1,0 +1,15 @@
+<div class="flex flex-col items-center justify-center gap-2 mt-[10rem]">
+  <div class="text-3xl font-bold font-sans">Payment</div>
+  <div class="font-bold text-4xl text-green-800">&#x20A6;{{ payments }}</div>
+  <div class="mt-10">
+    <button
+      mat-icon-button
+      class="paypay px-4 hover:shadow-md"
+      (click)="handlePayPal()"
+    >
+      <span class="flex justify-between font-bold text-blue-700"
+        >Paypal<mat-icon>paypal</mat-icon></span
+      >
+    </button>
+  </div>
+</div>

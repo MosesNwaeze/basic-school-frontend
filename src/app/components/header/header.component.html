@@ -1,10 +1,28 @@
-<ul class="flex flex-col justify-end gap-2 sm:flex-row text-white cursor-pointer align-middle bg-blue-400 p-4 rounded-md font-medium text-lg">
-    <li class=" hover:text-black">Home</li>
-    <li class=" hover:text-black">About Us</li>
-    <li class=" hover:text-black">Our Services</li>
-    <li class=" hover:text-black">Media</li>
-    <li class=" hover:text-black">Resources</li>
-    <li class=" hover:text-black">Contact</li>
+<mat-toolbar class="justify-between my-4 mt-0 items-center header">
+  <div><a routerLink="/">SCHOOL NAME</a></div>
+
+  <button mat-icon-button [matMenuTriggerFor]="navLink" class="md:hidden">
+    <mat-icon>dehaze</mat-icon>
+  </button>
+
+  <mat-menu
+    #navLink="matMenu"
+    class="bg-slate-100 cursor-pointer md:hidden w-[13rem]"
+  >
+    <button mat-menu-item class="text-blue-700 font-medium text-sm">Home</button>
+    <button mat-menu-item class="text-blue-700 font-medium text-sm">About Us</button>
+    <button mat-menu-item class="text-blue-700 font-medium text-sm">Our Services</button>
+    <button mat-menu-item class="text-blue-700 font-medium text-sm">Media</button>
+    <button mat-menu-item class="text-blue-700 font-medium text-sm">Resources</button>
+    <button mat-menu-item class="text-blue-700 font-medium text-sm">Contact</button>
+  </mat-menu>
+
+  <ul class="large-device">
+    <li class="hover:text-black">Home</li>
+    <li class="hover:text-black">About Us</li>
+    <li class="hover:text-black">Our Services</li>
+    <li class="hover:text-black">Media</li>
+    <li class="hover:text-black">Resources</li>
+    <li class="hover:text-black">Contact</li>
   </ul>
-  
-  
+</mat-toolbar>

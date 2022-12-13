@@ -1,0 +1,30 @@
+.login-input {
+    padding: 0.5rem;
+    border: solid 2px black;
+    width: 20rem;
+    border-radius: 5px;
+    font-weight: 600;
+    font-size: medium;
+  }
+  
+  .login-input:hover {
+    box-shadow: 0 0 5px #a0acbb;
+  }
+  
+  .update {
+    color: #fff;
+    background-color: #2160a6;
+    padding: 0.5rem;
+    width: 20rem;
+    border-radius: 5px;
+    font-weight: 600;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+  .update:hover {
+    box-shadow: 0 0 5px #a0acbb;
+    background-color: #2e84e6;
+  }
+
+  
+  

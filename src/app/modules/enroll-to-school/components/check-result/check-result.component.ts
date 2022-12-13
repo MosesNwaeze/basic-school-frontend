@@ -14,6 +14,7 @@ export class CheckResultComponent implements OnInit {
   }
 
   checkResult(){
+  
     this.router.navigate(["enroll-to-school/check-result-form"]);
   }
 

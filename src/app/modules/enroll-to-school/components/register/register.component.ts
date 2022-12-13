@@ -12,6 +12,8 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {}
 
   register() {
+    
+    
     this.router.navigate(['enroll-to-school/register-form']);
   }
 }

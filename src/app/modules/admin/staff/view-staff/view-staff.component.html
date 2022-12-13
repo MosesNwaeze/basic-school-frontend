@@ -1,0 +1,60 @@
+<div class="d-c">
+    <mat-table [dataSource]="dataSource" class="view-staff-table">
+        <!-- Position Column -->
+        <ng-container matColumnDef="staff-id">
+          <mat-header-cell *matHeaderCellDef class="w-[60rem]"> Staff ID</mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{ element["staff_id"] }} </mat-cell>
+        </ng-container>
+      
+        <!-- Name Column -->
+        <ng-container matColumnDef="first-name">
+          <mat-header-cell *matHeaderCellDef> First Name </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{ element["first_name"] }} </mat-cell>
+        </ng-container>
+      
+        <!-- Weight Column -->
+        <ng-container matColumnDef="last-name">
+          <mat-header-cell *matHeaderCellDef> Last Name </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{ element["last_name"] }} </mat-cell>
+        </ng-container>
+      
+      
+        <!-- Weight Column -->
+        <ng-container matColumnDef="class">
+          <mat-header-cell *matHeaderCellDef> Class</mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{ element["class_name"] }} </mat-cell>
+        </ng-container>
+      
+      
+        <!-- Weight Column -->
+        <ng-container matColumnDef="actions">
+          <mat-header-cell *matHeaderCellDef> Actions </mat-header-cell>
+          <mat-cell *matCellDef="let element">
+            <span class="flex gap-4">
+              <button
+                mat-icon-button
+                aria-label="Details"
+                class="text-blue-900 hover:text-blue-600"
+                (click)="openDialog(element['staff_id'])"
+              >
+                <mat-icon>visibility</mat-icon>
+              </button>
+              <button
+                mat-icon-button
+                aria-label="Delete"
+                class="text-red-500 hover:text-red-300"
+                (click)="delete(element['staff_id'])"
+              >
+                <mat-icon>delete_forever</mat-icon>
+              </button>
+            </span>
+          </mat-cell>
+        </ng-container>
+      
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+      </mat-table>
+      
+</div>
+
+

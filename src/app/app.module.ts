@@ -13,6 +13,13 @@ import { CurriculumModule } from './modules/curriculum/curriculum.module';
 import { MobileAppModule } from './modules/mobile-app/mobile-app.module';
 import { StaffPortalModule } from './modules/staff-portal/staff-portal.module';
 import { StudentPortalModule } from './modules/student-portal/student-portal.module';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatCardModule } from '@angular/material/card';
+import { PaymentModule } from './modules/payment/payment.module';
+import { AdminModule } from './modules/admin/admin.module';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -32,6 +39,13 @@ import { StudentPortalModule } from './modules/student-portal/student-portal.mod
     MobileAppModule,
     StaffPortalModule,
     StudentPortalModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatMenuModule,
+    MatCardModule,
+    PaymentModule,
+    AdminModule,
+    MatProgressSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent],

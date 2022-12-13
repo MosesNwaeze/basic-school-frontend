@@ -1,0 +1,96 @@
+<div class="text-white bg-slate-500 flex justify-end px-7 mb-0 max-h-10">
+  <div class="flex justify-between items-center">
+    <img class="w-10 h-10 rounded-full m-2 bg-gray-700" />
+
+    <div class="">
+      <span class="flex justify-between items-center"
+        >Timothy&nbsp;&nbsp;
+        <button
+          mat-icon-button
+          [matMenuTriggerFor]="menu"
+          aria-label="Example icon-button with a menu"
+        >
+          <mat-icon
+            class="bg-blue-800 text-white rounded-full hover:bg-white hover:text-blue-700 mt-2"
+            >keyboard_arrow_down</mat-icon
+          >
+        </button></span
+      >
+
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item>
+          <mat-icon>dialpad</mat-icon>
+          <span>Redial</span>
+        </button>
+        <button mat-menu-item disabled>
+          <mat-icon>voicemail</mat-icon>
+          <span>Check voice mail</span>
+        </button>
+        <button mat-menu-item>
+          <mat-icon>notifications_off</mat-icon>
+          <span>Disable alerts</span>
+        </button>
+      </mat-menu>
+    </div>
+  </div>
+</div>
+<div class="dashboard mt-0 p-0">
+  <main class="left">
+    <div class="m-8 text-3xl">LOGO</div>
+    <a
+      routerLink="dashboard"
+      class="left-items"
+      routerLinkActive="active-link"
+      ariaCurrentWhenActive="page"
+    >
+      <i class="fa fa-tachometer mr-2" aria-hidden="true"></i> Dashboard
+    </a>
+    <a
+      routerLink="profile"
+      class="left-items"
+      routerLinkActive="active-link"
+      ariaCurrentWhenActive="page"
+      ><i class="fa fa-user mr-2" aria-hidden="true"></i> Profile
+    </a>
+    <a
+      routerLink="result"
+      class="left-items"
+      routerLinkActive="active-link"
+      ariaCurrentWhenActive="page"
+      ><i class="fas fa-table mr-2"></i> Result
+    </a>
+    <a
+      routerLink="payment"
+      class="left-items"
+      routerLinkActive="active-link"
+      ariaCurrentWhenActive="page"
+      ><i class="fa fa-credit-card mr-2" aria-hidden="true"></i> Payment
+    </a>
+    <a
+      routerLink="e-learning"
+      class="left-items"
+      routerLinkActive="active-link"
+      ariaCurrentWhenActive="page"
+    >
+      <i class="fa fa-graduation-cap mr-2" aria-hidden="true"></i>E-Learning
+    </a>
+    <a
+      routerLink="class-information"
+      class="left-items flex"
+      routerLinkActive="active-link"
+      ariaCurrentWhenActive="page"
+      ><i class="fas fa-question-circle mr-2 mt-[5px]"></i>Class Information
+    </a>
+    <a
+      routerLink="new-uniform"
+      class="left-items"
+      routerLinkActive="active-link"
+      ariaCurrentWhenActive="page"
+    >
+      <i class="fas fa-tshirt mr-2"></i> New Unform
+    </a>
+  </main>
+  <main class="content p-2">
+    <router-outlet> </router-outlet>
+  </main>
+</div>

@@ -1,0 +1,62 @@
+<div class="fee flex flex-col gap-10">
+  <mat-toolbar class="flex justify-between mb-10">
+    <div>
+      <span class="block text-lg font-bold text-blue-900">Payment</span>
+      <span class="block text-sm font-sans"
+        >showing payment for {{userData['last_name']}} of {{userData['student_class']}}</span
+      >
+    </div>
+    <div>
+      <span class="block text-sm">Form tutor: {{userData['staff_last_name']}}</span>
+    </div>
+  </mat-toolbar>
+  <div class="flex justify-between mb-2">
+    <div class="text-base font-bold">Fee Schedule</div>
+    <div
+      class="text-sm bg-[#F9F9F9] p-1 text-blue-900 rounded-lg cursor-pointer font-bold"
+      role="button"
+      (click)="paymentHistory()"
+    >
+      <i class="fa fa-history mr-2" aria-hidden="true"></i>View History
+    </div>
+  </div>
+  <div>
+    <table class="table">
+      <thead>
+        <tr class="payment">
+          <th scope="col">S/N</th>
+          <th scope="col">Category</th>
+          <th scope="col">Amount</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let fee of fees; let i = index">
+          <td>{{ i }}</td>
+          <td>{{ fee["fee_type"] }}</td>
+          <td>{{ fee["amount"] }}</td>
+        </tr>
+        <!-- Dont edit this -->
+        <tr class="last">
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="self-start flex gap-[8rem]">
+    <div
+      class="items-start bg-[#F9F9F9] p-2 font-extrabold w-[10rem] rounded-lg"
+    >
+      Total <span class="text-blue-900">&#8358;{{ totalPayment }}</span>
+    </div>
+    <div>
+      <button
+        class="p-3 bg-[#1E3A8A] text-white rounded-lg"
+        (click)="makePayment()"
+      >
+        Make Payment
+      </button>
+    </div>
+  </div>
+</div>

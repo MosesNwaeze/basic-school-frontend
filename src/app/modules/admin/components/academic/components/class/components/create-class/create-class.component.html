@@ -1,0 +1,42 @@
+<div>
+  <form [formGroup]="createClassForm" (ngSubmit)="createClass()">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-3">
+      <mat-form-field class="example-form-field" appearance="fill">
+        <mat-label>Class Name</mat-label>
+        <input matInput type="text" class="" formControlName="class_name" autofocus/>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Class category</mat-label>
+        <select
+          matNativeControl
+          required
+          formControlName="class_category"
+          class=""
+        >
+          <option value="primary">Primary</option>
+          <option value="junior">Junior</option>
+          <option value="senior">Senior</option>
+        </select>
+      </mat-form-field>
+      <mat-form-field class="example-form-field" appearance="fill">
+        <mat-label>Class Capacity</mat-label>
+        <input
+          matInput
+          type="number"
+          class=""
+          formControlName="class_capacity"
+        />
+      </mat-form-field>
+    </div>
+
+    <button
+      mat-icon-button
+      class="rounded-md text-white bg-blue-900 border-2 p-2 text-base font-bold hover:bg-blue-600 hover:shadow-md text-center"
+      (click)="createClass()"
+    >
+      <span class="flex items-center justify-center gap-2"
+        ><mat-icon class="">store</mat-icon> Create Class</span
+      >
+    </button>
+  </form>
+</div>

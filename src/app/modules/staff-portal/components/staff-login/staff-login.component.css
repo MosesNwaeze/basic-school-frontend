@@ -1,0 +1,46 @@
+.staff-login {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    max-width: 50rem;
+    gap: 2em;
+    margin: auto auto;
+    margin-top: 4rem;
+  }
+  
+  .login-input {
+    padding: 0.5rem;
+    border: solid 2px black;
+    width: 20rem;
+    border-radius: 5px;
+    font-weight: 600;
+    font-size: medium;
+  }
+  
+  .login-input:hover {
+    box-shadow: 0 0 5px #a0acbb;
+  }
+  
+  .h1 {
+    color: #2160a6;
+    font-weight: 900;
+    font-size: 25px;
+  }
+  
+  
+  
+  .login {
+    color: #fff;
+    background-color: #2160a6;
+    padding: 0.5rem;
+    width: 20rem;
+    border-radius: 5px;
+    font-weight: 600;
+  }
+  .login:hover {
+    box-shadow: 0 0 5px #a0acbb;
+    background-color: #2e84e6;
+  }
+  
+  .disabled{
+    
+  }

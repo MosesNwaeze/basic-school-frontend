@@ -1,0 +1,11 @@
+.input-controls{
+    border: solid 1.7px black;
+    text-align: left;
+    font-weight: 700;
+}
+
+.input-controls:hover{
+     border-width: 3px;
+     box-shadow: 0 0 5px 5px #DEDEDE;
+     border-color: #1E3A8A;
+}

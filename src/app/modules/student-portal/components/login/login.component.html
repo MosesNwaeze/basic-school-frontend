@@ -1,0 +1,61 @@
+<div class="staff-login">
+  <diV class="flex flex-col gap-5 items-center justify-center stu-inf">
+    <h3 class="text-red-500 text-sm font-medium" *ngIf="errorMessage">
+      {{ errorMessage }}
+    </h3>
+    <h2 *ngIf="formsErrors" class="text-red-700 text-sm font-bold">
+      {{ formsErrors }}
+    </h2>
+    <div class="">
+      <h1 class="h1">Student Portal</h1>
+    </div>
+    <form class="flex flex-col gap-10" [formGroup]="studentLogin">
+      <div class="flex flex-col">
+        <input
+          type="text"
+          name="registration_number"
+          placeholder="Registration Number"
+          class="login-input"
+          formControlName="student_id"
+          autofocus
+        />
+
+        <div
+          *ngIf="
+            student_id!.invalid && (student_id!.dirty || student_id!.touched)
+          "
+          class="text-red-600 text-[12px] mt-0 font-semibold flex justify-start ml-2 mb-[0.27rem]"
+        >
+          <div *ngIf="student_id!.errors?.['required']" class="">
+            Registration Number is required.
+          </div>
+        </div>
+      </div>
+      <div class="flex flex-col">
+        <input
+          type="password"
+          name="password"
+          placeholder="Password"
+          class="login-input"
+          formControlName="password"
+        />
+        <div
+          *ngIf="password!.invalid && (password!.dirty || password!.touched)"
+          class="text-red-600 text-[12px] mt-0 font-semibold flex justify-start ml-2 mb-[0.27rem]"
+        >
+          <div *ngIf="password!.errors?.['required']" class="">
+            Password is required.
+          </div>
+        </div>
+      </div>
+      <div>
+        <button class="login justify-self-center" (click)="handleLoginSubmit()">
+          Login
+        </button>
+      </div>
+    </form>
+  </diV>
+  <diV class="stu-img">
+    <img src="../../../../../assets/images/student.png" class="" />
+  </diV>
+</div>

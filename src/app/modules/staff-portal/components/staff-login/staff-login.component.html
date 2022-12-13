@@ -1,0 +1,131 @@
+<div class="staff-login">
+  <diV class="flex flex-col gap-5 items-center justify-center stu-inf">
+    <h2 *ngIf="formsErrors" class="text-red-700 text-sm font-bold">
+      {{ formsErrors }}
+    </h2>
+    <div class="">
+      <h1 class="h1 text-blue-900 font-bold">Staff Portal</h1>
+    </div>
+
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title class="text-blue-900 text-lg font-bold">
+          Login as staff
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <form class="flex flex-col gap-10" [formGroup]="staffLogin">
+        <div class="flex flex-col">
+          <input
+            type="text"
+            name="staff_id"
+            id="staff_id"
+            placeholder="Staff ID"
+            class="login-input"
+            formControlName="staff_id"
+            autofocus
+          />
+
+          <div
+            *ngIf="staff_id!.invalid && (staff_id!.dirty || staff_id!.touched)"
+            class="text-red-600 text-[12px] mt-0 font-semibold flex justify-start ml-2 mb-[0.27rem]"
+          >
+            <div *ngIf="staff_id!.errors?.['required']" class="">
+              Staff ID is required.
+            </div>
+          </div>
+        </div>
+        <div class="flex flex-col">
+          <input
+            type="password"
+            name="password"
+            placeholder="Password"
+            id="password"
+            class="login-input"
+            formControlName="password"
+          />
+          <div
+            *ngIf="password!.invalid && (password!.dirty || password!.touched)"
+            class="text-red-600 text-[12px] mt-0 font-semibold flex justify-start ml-2 mb-[0.27rem]"
+          >
+            <div *ngIf="password!.errors?.['required']" class="">
+              Password is required.
+            </div>
+          </div>
+        </div>
+        <div>
+          <button
+            class="login justify-self-center"
+            (click)="handleLoginSubmit()"
+          >
+            Staff Login
+          </button>
+        </div>
+      </form>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title class="text-blue-900 text-lg font-bold">
+          Login as admin
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <form class="flex flex-col gap-10" [formGroup]="adminLogin">
+        <div class="flex flex-col">
+          <input
+            type="text"
+            name="app_id"
+            id="app_id"
+            placeholder="School App ID"
+            class="login-input"
+            formControlName="school_app_id"
+          />
+
+          <div
+            *ngIf="
+              schoolAppId!.invalid &&
+              (schoolAppId!.dirty || schoolAppId!.touched)
+            "
+            class="text-red-600 text-[12px] mt-0 font-semibold flex justify-start ml-2 mb-[0.27rem]"
+          >
+            <div *ngIf="schoolAppId!.errors?.['required']" class="">
+              School App Id is required.
+            </div>
+          </div>
+        </div>
+        <div class="flex flex-col">
+          <input
+            type="password"
+            name="school_app_secrete"
+            placeholder="School App Secrete"
+            id="school_app_secrete"
+            class="login-input"
+            formControlName="school_app_secrete"
+          />
+          <div
+            *ngIf="
+              schoolAppSecrete!.invalid &&
+              (schoolAppSecrete!.dirty || schoolAppSecrete!.touched)
+            "
+            class="text-red-600 text-[12px] mt-0 font-semibold flex justify-start ml-2 mb-[0.27rem]"
+          >
+            <div *ngIf="schoolAppSecrete!.errors?.['required']" class="">
+              School app secrete is required.
+            </div>
+          </div>
+        </div>
+        <div>
+          <button
+            class="login justify-self-center"
+            (click)="handleAdminLogin()"
+          >
+            Admin Login
+          </button>
+        </div>
+      </form>
+    </mat-expansion-panel>
+  </diV>
+  <diV class="stu-img">
+    <img src="../../../../../assets/images/staff.png" class="" />
+  </diV>
+</div>

@@ -1,0 +1,43 @@
+<form
+  [formGroup]="assignTeacherForm"
+  (ngSubmit)="assign()"
+  class="flex flex-col"
+>
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
+    <mat-form-field appearance="fill">
+      <mat-label>Select Class</mat-label>
+      <select matNativeControl required formControlName="class_name" autofocus>
+        <option [value]="item['class_name']" *ngFor="let item of classData">
+          {{ item["class_name"] }}
+        </option>
+      </select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Select Teacher</mat-label>
+      <select matNativeControl required formControlName="class_teacher">
+        <option [value]="item['staff_id']" *ngFor="let item of staffData">
+          {{ item["last_name"] }}&nbsp;{{ item["first_name"] }}
+        </option>
+      </select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Select Assistant Teacher</mat-label>
+      <select matNativeControl required formControlName="asst_class_teacher">
+        <option [value]="item['staff_id']" *ngFor="let item of staffData">
+          {{ item["last_name"] }}&nbsp;{{ item["first_name"] }}
+        </option>
+      </select>
+    </mat-form-field>
+  </div>
+  <button
+    mat-icon-button
+    class="rounded-md text-white bg-blue-900 border-2 p-2 text-base font-bold hover:bg-blue-600 hover:shadow-md text-center"
+    (click)="assign()"
+  >
+    <span class="flex items-center justify-center gap-2"
+      ><mat-icon class="">account_box</mat-icon> Assign Teacher</span
+    >
+  </button>
+</form>

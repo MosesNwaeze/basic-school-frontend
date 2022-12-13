@@ -1,0 +1,287 @@
+<div class="student-form">
+  <form class="flex flex-col" (ngSubmit)="onSubmit()" [formGroup]="studentForm">
+    <div
+      *ngIf="isValidFields"
+      class="text-red-600 text-base flex justify-center items-center mt-5 bg-slate-50 font-bold"
+    >
+      {{ validFields }}
+    </div>
+    <div class="file">
+      <div class="mt-3">
+        <img
+          [src]="fileName ? file : 'https://via.placeholder.com/150'"
+          class="w-[150px] h-[150px] mb-3"
+          alt="student-photo"
+        />
+      </div>
+      <div>
+        <input
+          type="file"
+          name="studentPhoto"
+          (change)="handleFileUpload($event)"
+          required="true"
+          enctype="multipart/form-data"
+          #fileUpload
+          class="hidden"
+        />
+
+        <div class="file-upload flex mt-3">
+          <span [ngStyle]="!fileName ? { color: 'red' } : { color: 'black' }">{{
+            fileName || "No file uploaded yet."
+          }}</span>
+
+          <button mat-mini-fab (click)="fileUpload.click()">
+            <mat-icon class="">attach_file</mat-icon>
+          </button>
+        </div>
+        <em class="text-[#1E3A8A]"
+          >upload a clear photo of the candidate with a white background. The
+          photo must be less than 2mb</em
+        >
+        <mat-icon class="absolute top-[47%] left-[33%] text-[#1E3A8A] text-xl"
+          >add</mat-icon
+        >
+      </div>
+    </div>
+
+    <mat-card class="my-1">
+      <div
+        class="grid grid-cols-1 md:grid-cols-2  place-items-center my-5 gap-3"
+      >
+        <div class="flex flex-col">
+          <span class="text-red-500 block"
+            >*Please take note of your registration number</span
+          >
+          <label class="text-lg">Registration Number </label>
+          <input
+            type="text"
+            id="student_id"
+            name="student_id"
+            disabled
+            [value]="student_id"
+            class="student-id"
+          />
+        </div>
+
+        <div class="flex flex-col">
+          <input
+            type="text"
+            id="first-name"
+            name="first-name"
+            formControlName="first_name"
+            placeholder="First name"
+            class="login-input"
+          />
+          <div
+            *ngIf="
+              studentFirstName!.invalid &&
+              (studentFirstName!.dirty || studentFirstName!.touched)
+            "
+            class="text-red-600 text-[12px] mt-0 font-semibold flex justify-start ml-2 mb-[0.27rem]"
+          >
+            <div *ngIf="studentFirstName!.errors?.['required']" class="">
+              First name is required.
+            </div>
+          </div>
+        </div>
+
+        <div class="flex flex-col">
+          <input
+            type="text"
+            id="middle-name"
+            name="middle-name"
+            formControlName="middle_name"
+            placeholder="Middle Name"
+            class="login-input"
+          />
+        </div>
+
+        <div class="flex flex-col">
+          <input
+            type="text"
+            id="last-name"
+            name="last-name"
+            formControlName="last_name"
+            placeholder="Last name"
+            class="login-input"
+          />
+          <div
+            *ngIf="
+              studentLastName!.invalid &&
+              (studentLastName!.dirty || studentLastName!.touched)
+            "
+            class="login-input"
+          >
+            <div *ngIf="studentLastName!.errors?.['required']" class="">
+              Last name is required.
+            </div>
+          </div>
+        </div>
+
+        <div class="flex flex-col">
+          <input
+            type="text"
+            id="religion"
+            name="religion"
+            formControlName="religion"
+            placeholder="Religion"
+            class="login-input"
+          />
+          <div
+            *ngIf="
+              studentReligion!.invalid &&
+              (studentReligion!.dirty || studentReligion!.touched)
+            "
+            class="text-red-600 text-[12px] mt-0 font-semibold flex justify-start ml-2 mb-[0.27rem]"
+          >
+            <div *ngIf="studentReligion!.errors?.['required']" class="">
+              Religion is required.
+            </div>
+          </div>
+        </div>
+        <div class="flex flex-col">
+          <input
+            type="date"
+            id="date-of-birth"
+            name="date-of-birth"
+            formControlName="date_of_birth"
+            class="login-input"
+          />
+          <div
+            *ngIf="
+              studentDateOfBirth!.invalid &&
+              (studentDateOfBirth!.dirty || studentDateOfBirth!.touched)
+            "
+            class="text-red-600 text-[12px] mt-0 font-semibold flex justify-start ml-2 mb-[0.27rem]"
+          >
+            <div *ngIf="studentDateOfBirth!.errors?.['required']" class="">
+              Date of birth is required.
+            </div>
+          </div>
+        </div>
+        <div class="flex flex-col">
+          <input
+            type="text"
+            id="phone-number"
+            name="phone-number"
+            formControlName="phone_number"
+            placeholder="Phone number"
+            class="login-input"
+          />
+        </div>
+
+        <div class="flex flex-col">
+          <input
+            type="text"
+            id="gender"
+            name="gender"
+            formControlName="gender"
+            placeholder="Gender"
+            class="login-input"
+          />
+
+          <div
+            *ngIf="
+              studentGender!.invalid &&
+              (studentGender!.dirty || studentGender!.touched)
+            "
+            class="text-red-600 text-[12px] mt-0 font-semibold flex justify-start ml-2 mb-[0.27rem]"
+          >
+            <div *ngIf="studentGender!.errors?.['required']" class="">
+              Gender is required.
+            </div>
+          </div>
+        </div>
+
+        <div class="flex flex-col">
+          <input
+            type="text"
+            id="state-of-origin"
+            name="state-of-origin"
+            formControlName="state_of_origin"
+            placeholder="State of origin"
+            class="login-input"
+          />
+
+          <div
+            *ngIf="
+              studentStateOfOrigin!.invalid &&
+              (studentStateOfOrigin!.dirty || studentStateOfOrigin!.touched)
+            "
+            class="text-red-600 text-[12px] mt-0 font-semibold flex justify-start ml-2 mb-[0.27rem]"
+          >
+            <div *ngIf="studentStateOfOrigin!.errors?.['required']" class="">
+              State of origin is required.
+            </div>
+          </div>
+        </div>
+
+        <div class="flex flex-col gap-3">
+          <input
+            type="password"
+            id="password"
+            name="date-of-birth"
+            formControlName="password"
+            class="login-input"
+            placeholder="Password"
+          />
+          <div
+            *ngIf="password!.invalid && (password!.dirty || password!.touched)"
+            class="text-red-600 text-[12px] mt-0 font-semibold flex justify-start ml-2 mb-[0.27rem]"
+          >
+            <div *ngIf="password!.errors?.['required']" class="">
+              Password is required.
+            </div>
+          </div>
+
+          <div class="flex flex-col">
+            <input
+              type="password"
+              id="confirm-password"
+              name="confirm-password"
+              formControlName="confirm_password"
+              class="login-input"
+              placeholder="Confirm password"
+            />
+          </div>
+        </div>
+
+        <div class="flex flex-col">
+          <input
+            type="email"
+            id="email"
+            name="email"
+            formControlName="email"
+            placeholder="email"
+            class="login-input"
+          />
+        </div>
+
+        <div class="flex flex-col">
+          <textarea
+            name="address"
+            formControlName="address"
+            rows="5"
+            cols="40"
+            class="login-input"
+            placeholder="Address"
+          ></textarea>
+          <div
+            *ngIf="
+              studentAddress!.invalid &&
+              (studentAddress!.dirty || studentAddress!.touched)
+            "
+            class="text-red-600 text-[12px] mt-0 font-semibold flex justify-start ml-2 mb-[0.27rem]"
+          >
+            <div *ngIf="studentAddress!.errors?.['required']" class="">
+              Address is required.
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="text-center">
+        <button type="submit" class="create-student">Create student</button>
+      </div>
+    </mat-card>
+  </form>
+</div>

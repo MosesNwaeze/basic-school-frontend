@@ -5,10 +5,15 @@ import { RegisterComponent } from './components/register/register.component';
 import { EnrollToSchoolComponent } from './components/enroll-to-school/enroll-to-school.component';
 import { CheckResultFormComponent } from './components/check-result-form/check-result-form.component';
 import { RegisterFormComponent } from './components/register-form/register-form.component';
+import { DisplayResultComponent } from './components/display-result/display-result.component';
 
 const routes: Routes = [
   { path: 'enroll-to-school/check-result', component: CheckResultComponent },
   { path: 'enroll-to-school/register', component: RegisterComponent },
+  {
+    path: 'enroll-to-school/display-result',
+    component: DisplayResultComponent,
+  },
   {
     path: 'enroll-to-school/check-result-form',
     component: CheckResultFormComponent,
@@ -16,7 +21,7 @@ const routes: Routes = [
   { path: 'enroll-to-school/register-form', component: RegisterFormComponent },
   { path: '', redirectTo: 'enroll-to-school', pathMatch: 'full' },
   { path: '', component: EnrollToSchoolComponent },
-  ];
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

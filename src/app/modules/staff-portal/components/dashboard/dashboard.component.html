@@ -1,0 +1,106 @@
+<div class="w-full">
+  <mat-toolbar class="text-blue-900 justify-between">
+    <div class="text-base font-bold">Dashboard</div>
+    <div
+      class="flex justify-between text-sm flex-col md:flex-row md:gap-2 text-blue-500"
+    >
+      Welcome back <span class="text-green-800 italic">Timothy</span>
+    </div>
+  </mat-toolbar>
+
+  <div class="main-dashboard">
+    <div>
+      <div
+        class="grid grid-cols-1 md:grid-cols-3 place-items-center mt-3 border-solid border-red-200 gap-4"
+      >
+        <a [routerLink]="['../profile']">
+          <mat-card
+            class="my-2 border-l-[1rem] border-l-blue-900 hover:shadow-xl hover:border-blue-700"
+          >
+            <div class="w-[9rem]"><h4 class="">Profile</h4></div>
+          </mat-card>
+        </a>
+
+        <a routerLink="uploads">
+          <mat-card
+            class="my-2 border-l-[1rem] border-l-blue-900 hover:shadow-xl hover:border-blue-700"
+            ><div class="w-[9rem]">
+              <h4 class="font-bold">Upload certificates</h4>
+            </div>
+          </mat-card>
+        </a>
+
+        <a routerLink="curriculum">
+          <mat-card
+            class="my-2 border-l-[1rem] border-l-blue-900 hover:shadow-xl hover:border-blue-700"
+          >
+            <div class="w-[9rem]"><h4>Curriculum</h4></div></mat-card
+          >
+        </a>
+
+        <a routerLink="e-learning">
+          <mat-card
+            class="my-2 border-l-[1rem] border-l-blue-900 hover:shadow-xl hover:border-blue-700"
+          >
+            <div class="w-[9rem]"><h4>E-Learning</h4></div></mat-card
+          >
+        </a>
+
+        <a routerLink="time-table">
+          <mat-card
+            class="my-2 border-l-[1rem] border-l-blue-900 hover:shadow-xl hover:border-blue-700"
+          >
+            <div class="w-[9rem]"><h4>Time-Table</h4></div></mat-card
+          >
+        </a>
+      </div>
+      <div class="mt-10">
+        <h2 class="text-base m-5 text-blue-900 font-bold">School news</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+          <mat-card
+            class="w-full mb-2 hover:shadow-inner"
+            *ngFor="let news of schoolNews"
+          >
+            <div class="flex justify-between">
+              <h3 class="text-base text-blue-900 font-extrabold">
+                {{ news["news_title"] }}
+              </h3>
+              <span class="text-red-500">{{
+                getLocalDateString(news["date_posted"])
+              }}</span>
+            </div>
+
+            {{ news["news_content"] }}
+          </mat-card>
+        </div>
+        <div *ngIf="schoolNews.length <= 0">
+          <h3 class="text-yellow-600 text-base">No news at the moment</h3>
+        </div>
+      </div>
+    </div>
+
+    <main class="right p-2 hidden lg:block">
+      <div>
+        <mat-card class="w-[10rem] mt-[1rem] hover:shadow-2xl">
+          <div class="flex flex-col gap-2 items-center justify-center">
+            <img src="" class="rounded-full w-20 h-20 bg-slate-400" />
+            <span>Name</span>
+            <span>Subject</span>
+            <span>class</span>
+          </div>
+        </mat-card>
+        <div class="mt-10 flex justify-center items-center flex-col gap-2">
+          <h2 class="text-base text-blue-800">Upcoming events</h2>
+          <mat-card
+            class="justify-center items-center rounded-3xl flex-col flex-nowrap hover:shadow-inner w-[10rem]"
+            [style.background-color]="colorScheme[i % (colorScheme.length - 1)]"
+            *ngFor="let activity of staffActivities; let i = index"
+          >
+            <span class="block">{{ activity["activity"] }}</span>
+            <span>{{ getLocalDateString(activity["activity_time"]) }}</span>
+          </mat-card>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>

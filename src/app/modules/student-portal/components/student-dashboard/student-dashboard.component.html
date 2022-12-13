@@ -1,0 +1,119 @@
+<div class="dashboard flex flex-col gap-3">
+  <mat-toolbar class="flex justify-between">
+    <div>
+      <h1 class="text-sm">Dasboard</h1>
+      <span class="block text-xs">Welcome back</span>
+    </div>
+    <div class="text-xs">
+      <span class="block">Form tutor : name here</span>
+    </div>
+  </mat-toolbar>
+
+  <div class="a-card">
+    <div class="a-h flex justify-between bg-blue-900 h-20 rounded-md p-5 gap-5">
+      <div class="a-r flex justify-between gap-4">
+        <div class="a-ic mt-2">
+          <i
+            class="fa fa-info-circle text-white text-lg"
+            aria-hidden="true"
+          ></i>
+        </div>
+        <div class="a-t text-white">
+          <span class="font-bold">Action Required</span>
+          <span class="block">complete profile set-up</span>
+        </div>
+      </div>
+
+      <div class="n-t">
+        <i
+          class="fa fa-angle-right text-white text-lg mt-2"
+          aria-hidden="true"
+        ></i>
+      </div>
+    </div>
+
+    <div
+      class="card-c grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 mt-10 gap-5"
+    >
+      <mat-card class="hover:shadow-2xl">
+        <img
+          src="../../../../../assets/svgs/result-icon-for-dashboard.svg"
+          class="m-auto"
+        />
+        <span class="block text-center my-3 font-bold text-base">Result</span>
+        <span class="block text-xs"
+          >Want to see your result for your just concluded or previous
+          exams?</span
+        >
+        <button
+          class="w-full bg-blue-900 text-white mt-3 rounded-md p-2 text-base"
+          (click)="handleResult()"
+        >
+          Check Result
+        </button>
+      </mat-card>
+      <mat-card class="hover:shadow-2xl">
+        <img
+          src="../../../../../assets/svgs/Payment-icon-for-dashboard.svg"
+          class="m-auto"
+        />
+        <span class="block text-center my-3 font-bold text-base">Payment</span>
+        <span class="block text-xs"
+          >Wish to make payment? or do you wish to see previous payments
+          made?</span
+        >
+        <button
+          class="w-full bg-blue-900 text-white mt-3 rounded-md p-2 text-base"
+          (click)="handlePayment()"
+        >
+          Make Payment
+        </button>
+      </mat-card>
+      <mat-card class="hover:shadow-2xl">
+        <img
+          src="../../../../../assets/svgs/profile-icon-for-dashboard.svg"
+          class="m-auto"
+        />
+        <span class="block text-center my-3 font-bold text-base">Profile</span>
+        <span class="block text-xs">Want to see and update your profile? </span
+        ><br />
+        <button
+          class="w-full bg-blue-900 text-white mt-3 rounded-md p-2 text-base"
+          (click)="handleProfile()"
+        >
+          View Profile
+        </button>
+      </mat-card>
+    </div>
+  </div>
+
+  <div class="t-tabl">
+    <h3>
+      Time table for the day
+      <span class="font-bold text-base text-blue-900"
+        >{{ getDayInLetters() }}
+      </span>
+    </h3>
+
+    <mat-card *ngIf="isTimeTableEmpty">
+      <table *ngFor="let time of time_table">
+        <thead>
+          <tr>
+            <th>{{ time["from_duration"] }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{ time["subject_name"] }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </mat-card>
+
+    <div *ngIf="!isTimeTableEmpty" class="flex justify-center items-center">
+      <h2 class="text-blue-900 font-bold text-lg">
+        No time table for this day
+      </h2>
+    </div>
+  </div>
+</div>

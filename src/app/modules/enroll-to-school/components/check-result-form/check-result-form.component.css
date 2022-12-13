@@ -1,0 +1,5 @@
+
+
+.check-result-button{
+    @apply mb-3 w-[10rem] border-2 h-[3rem] self-center rounded-md bg-blue-700 text-white  hover:bg-blue-600 hover:shadow-lg
+}

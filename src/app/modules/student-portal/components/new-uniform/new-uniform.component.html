@@ -1,0 +1,122 @@
+<div class="fee flex flex-col gap-10">
+  <mat-toolbar class="flex justify-between mb-10">
+    <div>
+      <span class="block text-lg font-bold text-blue-900">School Uniform</span>
+      <span class="block text-sm font-sans"
+        >showing school uniform for {{ userData["last_name"] }} of
+        {{ userData["student_class"] }}</span
+      >
+    </div>
+    <div>
+      <span class="block text-sm"
+        >Form tutor: {{ userData["staff_last_name"] }}</span
+      >
+    </div>
+  </mat-toolbar>
+  <div class="flex justify-between mb-2">
+    <div class="text-base font-sans text-blue-900">
+      Request for new school uniform
+    </div>
+  </div>
+  <div>
+    <table class="table">
+      <thead>
+        <tr class="payment">
+          <th scope="col">S/N</th>
+          <th scope="col">Uniform Types</th>
+          <th scope="col">Size</th>
+          <th scope="col">Quantity</th>
+          <th scope="col">Amount</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let uniform of uniforms; let i = index" id="uniform">
+          <td>{{ i }}</td>
+          <td [id]="uniform['uniform_type']" name="uniform_type">
+            {{ uniform["uniform_type"] }}
+          </td>
+
+          <td
+            class="flex justify-around gap-2 text-[10px] font-bold"
+            name="uniform_size"
+          >
+            <button
+              class="p-1 bg-transparent size"
+              name="M"
+              (click)="selected($event)"
+            >
+              M</button
+            ><button
+              class="p-1 bg-transparent size"
+              name="L"
+              (click)="selected($event)"
+              button
+            >
+              L</button
+            ><button
+              class="p-1 bg-transparent size"
+              name="XL"
+              (click)="selected($event)"
+              button
+            >
+              XL</button
+            ><button
+              class="p-1 bg-transparent size"
+              name="XXL"
+              (click)="selected($event)"
+            >
+              XXL</button
+            ><button
+              class="p-1 bg-transparent size"
+              name="XXXL"
+              (click)="selected($event)"
+            >
+              XXXL
+            </button>
+          </td>
+
+          <td>
+            <button class="bg-transparent" (click)="decrease()">
+              <i
+                class="fa fa-angle-left text-blue-900 bg-[#EFEFEF]"
+                aria-hidden="true"
+              ></i></button
+            >&nbsp;
+            <span class="bg-[#EFEFEF] p-[0.40rem]">{{ count }}</span>
+            &nbsp;
+            <button class="bg-transparent" (click)="increase()">
+              <i
+                class="fa fa-angle-right text-blue-900 bg-[#EFEFEF]"
+                aria-hidden="true"
+              ></i>
+            </button>
+          </td>
+          <td
+            [id]="computedAmount(uniform['uniform_amount'])"
+            name="uniform_amount"
+          >
+            {{ computedAmount(uniform["uniform_amount"]) }}
+          </td>
+        </tr>
+        <!-- Dont edit this -->
+        <tr class="last">
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="self-center">
+    <div>
+      <button
+        class="p-3 bg-[#1E3A8A] text-white rounded-lg"
+        (click)="makeRequest()"
+      >
+        Make Request
+      </button>
+    </div>
+  </div>
+</div>

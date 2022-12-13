@@ -1,1 +1,19 @@
-<p>check-result-form works!</p>
+<mat-card>
+  <form
+    class="flex flex-col p-[5rem] justify-start"
+    [formGroup]="formGroup"
+    (ngSubmit)="displayResult()"
+  >
+    <span class="block text-red-500 text-sm self-center" *ngIf="errorMessage">{{
+      errorMessage
+    }}</span>
+
+    <input
+      id="registration_number"
+      placeholder="Registration Number"
+      formControlName="registrationNumber"
+      class="w-[17rem] h-[3rem] m-5 font-medium border-[1px] text-center rounded-md hover:border-black hover:shadow-md self-center"
+    />
+    <button class="check-result-button">Check Result</button>
+  </form>
+</mat-card>

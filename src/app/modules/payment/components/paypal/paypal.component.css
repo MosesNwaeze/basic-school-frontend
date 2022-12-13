@@ -1,0 +1,19 @@
+.paypay{
+    width: 15rem;
+    height: 3rem;
+    background: transparent;
+    border: solid 1px #A7A4A2;
+    border-radius: 5px;
+}
+
+.pay::before{
+    content: "";
+    border: solid 2px black;
+    width: 10px;
+    height: 10px;
+    border-radius: 100%;
+}
+
+.paypay:hover{
+    border: solid 2px black;
+}

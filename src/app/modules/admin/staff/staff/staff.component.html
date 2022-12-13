@@ -1,0 +1,32 @@
+<div>
+  <mat-toolbar class="text-blue-900 justify-between">
+    <div class="font-bold text-lg">Manage staff</div>
+    <div
+      class="flex justify-between text-sm flex-col md:flex-row md:gap-2 text-blue-500"
+    >
+      Welcome back <span class="text-green-800 italic">0</span>
+    </div>
+  </mat-toolbar>
+  <div>
+    <nav class="flex gap-10 justify-start py-5 font-medium text-base">
+
+
+      <a
+        routerLink="view-staff"
+        routerLinkActive="active-link"
+        ariaCurrentWhenActive="page"
+        >View Staff</a
+      >
+      <a
+        routerLink="create-staff"
+        routerLinkActive="active-link"
+        ariaCurrentWhenActive="page"
+        >create Staff</a
+      >
+      
+    </nav>
+    <div>
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

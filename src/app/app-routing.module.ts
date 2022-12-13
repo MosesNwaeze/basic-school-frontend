@@ -39,6 +39,20 @@ const routes: Routes = [
       ),
   },
   {
+    path: 'payments',
+    loadChildren: () =>
+      import('./modules/payment/payment-routing.module').then(
+        (cpm) => cpm.PaymentRoutingModule
+      ),
+  },
+  {
+    path: 'admin',
+    loadChildren: () =>
+      import('./modules/admin/admin-routing.module').then(
+        (cmp) => cmp.AdminRoutingModule
+      ),
+  },
+  {
     path: '',
     component: HomeComponent,
   },

@@ -1,0 +1,15 @@
+table {
+  width: 100%;
+}
+
+th.mat-sort-header-sorted {
+  color: black;
+}
+
+.font {
+  font-weight: 600;
+  font-size: small;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: black;
+  
+}

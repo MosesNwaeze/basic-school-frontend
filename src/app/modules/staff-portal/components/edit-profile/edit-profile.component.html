@@ -1,0 +1,90 @@
+<div class="p-0">
+  <div class="flex gap-2 justify-start items-start flex-col border-green-600">
+    <div class="flex flex-col gap-1 items-start justify-start">
+      <img [src]="passport" class="w-28 h-28 rounded-full p-2 bg-slate-500" />
+      <span class="mt-3">{{ last_name }}</span>
+    </div>
+  </div>
+  <hr class="hr" />
+  <div class="flex flex-col gap-1 text-sm">
+    <div class="">Form Tutor: Jss1</div>
+    <div class="">Staff ID: {{ staff_id }}</div>
+  </div>
+  <hr class="hr" />
+  <div class="flex flex-col gap-1 text-sm">
+    <div class="">First Name: {{ first_name }}</div>
+    <div class="">Last Name: {{ last_name }}</div>
+    <div class="">Email: {{ email }}</div>
+  </div>
+  <hr class="hr" />
+  <form [formGroup]="editForm" (ngSubmit)="handleSubmit()">
+    <div class="grid grid-cols-1 gap-2 md:grid-cols-2">
+      <div class="form-control flex flex-col items-start justify-start">
+        <input
+          type="text"
+          id="last-name"
+          name="last-name"
+          placeholder="Last Name"
+          formControlName="lastName"
+          class="login-input"
+        />
+      </div>
+      <div class="form-control flex flex-col items-start justify-start">
+        <input
+          type="text"
+          id="first-name"
+          name="first-name"
+          placeholder="First Name"
+          formControlName="firstName"
+          class="login-input"
+        />
+      </div>
+
+      <div class="form-control flex flex-col items-start justify-start">
+        <input
+          type="text"
+          id="middle-name"
+          name="middle-name"
+          placeholder="Middle Name"
+          formControlName="middleName"
+          class="login-input"
+        />
+      </div>
+
+      <div class="form-control flex flex-col items-start justify-start">
+        <input
+          type="text"
+          id="gender"
+          name="gender"
+          placeholder="gender"
+          formControlName="gender"
+          class="login-input"
+        />
+      </div>
+
+      <div class="form-control flex flex-col items-start justify-start">
+        <input
+          type="text"
+          id="religion"
+          name="religion"
+          placeholder="Religion"
+          formControlName="religion"
+          class="login-input"
+        />
+      </div>
+
+      <div class="form-control flex flex-col items-start justify-start">
+        <textarea
+          rows="5"
+          cols="10"
+          placeholder="Address"
+          formControlName="address"
+          class="address"
+        ></textarea>
+      </div>
+    </div>
+    <div class="flex justify-center items-center justify-self-center">
+      <button type="submit" class="update">Update</button>
+    </div>
+  </form>
+</div>

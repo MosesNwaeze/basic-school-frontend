@@ -1,0 +1,56 @@
+<h2 mat-dialog-title class="text-blue-900">Staff details</h2>
+<mat-dialog-content class="w-[120rem]">
+  <mat-table [dataSource]="staffDetails" class="mat-elevation-z8">
+    <ng-container matColumnDef="Religion">
+      <mat-header-cell *matHeaderCellDef> Religion</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{ element["religion"] }} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="Date Of Birth">
+      <mat-header-cell *matHeaderCellDef> Date Of Birth </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        {{ element["date_of_birth"] }}
+      </mat-cell>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="Phone Number">
+      <mat-header-cell *matHeaderCellDef> Phone Number </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        {{ element["phone_number"] }}
+      </mat-cell>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="Gender">
+      <mat-header-cell *matHeaderCellDef> Gender </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{ element["gender"] }} </mat-cell>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="State Of Origin">
+      <mat-header-cell *matHeaderCellDef> State Of Origin </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        {{ element["state_of_origin"] }}
+      </mat-cell>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="Email">
+      <mat-header-cell *matHeaderCellDef> Email </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{ element["email"] }} </mat-cell>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="Address">
+      <mat-header-cell *matHeaderCellDef> Address </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{ element["address"] }} </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+  </mat-table>
+</mat-dialog-content>
+<!-- <mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+</mat-dialog-actions> -->

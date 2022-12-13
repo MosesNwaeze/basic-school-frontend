@@ -1,0 +1,35 @@
+<div>
+  <mat-toolbar class="text-blue-900 justify-between">
+    <div class="font-bold text-2xl">Profile</div>
+    <div
+      class="flex justify-between text-sm flex-col md:flex-row md:gap-2 text-blue-500"
+    >
+      Welcome back <span class="text-green-800 italic">{{ last_name }}</span>
+    </div>
+  </mat-toolbar>
+  <div>
+    <nav class="flex gap-10 justify-start py-5 font-medium text-base">
+      <a
+        routerLink="create-profile"
+        routerLinkActive="active-link"
+        ariaCurrentWhenActive="page"
+        >Create Profile</a
+      >
+      <a
+        routerLink="edit-profile"
+        routerLinkActive="active-link"
+        ariaCurrentWhenActive="page"
+        >Update Profile</a
+      >
+      <a
+        routerLink="change-password"
+        routerLinkActive="active-link"
+        ariaCurrentWhenActive="page"
+        >Change password</a
+      >
+    </nav>
+    <div>
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

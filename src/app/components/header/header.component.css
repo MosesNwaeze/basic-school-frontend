@@ -1,0 +1,10 @@
+
+.large-device{
+    @apply md:flex md:gap-3 cursor-pointer font-medium text-base text-blue-700 hidden; gap:2.75rem;color: #2160A6 !important;font-weight: bolder !important;
+}
+.header{
+    position: sticky;
+    top: 0;
+    right: 0;
+    z-index: 5;
+}
